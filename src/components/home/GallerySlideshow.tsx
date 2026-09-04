@@ -8,8 +8,6 @@ import {
   Maximize2, 
   X, 
   Camera, 
-  Play, 
-  Pause, 
   Sparkles,
   ChevronLeft,
   ChevronRight
@@ -18,12 +16,10 @@ import { Button } from "@/components/ui/button";
 
 export function GallerySlideshow() {
   const [selectedPhoto, setSelectedPhoto] = React.useState<GalleryPhoto | null>(null);
-  const [isPaused, setIsPaused] = React.useState(false);
-  const [scrollSpeed, setScrollSpeed] = React.useState<"normal" | "slow">("normal");
-  const trackRef = React.useRef<HTMLDivElement>(null);
+  const [isHovered, setIsHovered] = React.useState(false);
   const containerRef = React.useRef<HTMLDivElement>(null);
 
-  // We duplicate the photos array to make an endless seamless infinite marquee
+  // We duplicate the photos array to create an endless seamless infinite marquee
   const seamlessPhotos = React.useMemo(() => {
     return [...GALLERY_PHOTOS, ...GALLERY_PHOTOS];
   }, []);
@@ -54,56 +50,26 @@ export function GallerySlideshow() {
               Inside Pelita Cafe
             </h2>
             <p className="text-espresso/70 text-sm sm:text-base max-w-xl font-light">
-              Automatic continuous slideshow showcasing our freshly pulled roasts, comforting dishes, and boutique dining spaces.
+              A serene visual journey showcasing our freshly pulled roasts, comforting dishes, and boutique dining spaces.
             </p>
           </div>
 
-          {/* Interactive Controls Bar */}
-          <div className="flex items-center flex-wrap gap-3">
-            {/* Play/Pause Toggle */}
+          {/* Quick Nudge Navigation Arrows */}
+          <div className="flex items-center gap-2">
             <button
-              onClick={() => setIsPaused(!isPaused)}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-espresso/20 bg-[#FFFDF9] text-espresso hover:bg-espresso hover:text-[#FFF9EE] text-xs font-medium transition-all shadow-sm active:scale-95"
-              aria-label={isPaused ? "Resume auto slideshow" : "Pause auto slideshow"}
+              onClick={() => handleManualNudge("left")}
+              aria-label="Slide left"
+              className="w-10 h-10 rounded-full border border-espresso/20 bg-[#FFFDF9] text-espresso hover:bg-espresso hover:text-[#FFF9EE] flex items-center justify-center transition-all duration-200 shadow-sm active:scale-95"
             >
-              {isPaused ? (
-                <>
-                  <Play className="w-3.5 h-3.5 fill-current" />
-                  <span>Resume Auto-Scroll</span>
-                </>
-              ) : (
-                <>
-                  <Pause className="w-3.5 h-3.5 fill-current" />
-                  <span>Pause Slideshow</span>
-                </>
-              )}
+              <ChevronLeft className="w-4 h-4" />
             </button>
-
-            {/* Speed Toggle */}
             <button
-              onClick={() => setScrollSpeed(scrollSpeed === "normal" ? "slow" : "normal")}
-              className="px-3.5 py-2 rounded-full border border-espresso/15 bg-[#FFFDF9] text-espresso/80 hover:text-espresso text-xs font-medium transition-colors"
+              onClick={() => handleManualNudge("right")}
+              aria-label="Slide right"
+              className="w-10 h-10 rounded-full border border-espresso/20 bg-[#FFFDF9] text-espresso hover:bg-espresso hover:text-[#FFF9EE] flex items-center justify-center transition-all duration-200 shadow-sm active:scale-95"
             >
-              Speed: <span className="font-semibold capitalize text-terracotta">{scrollSpeed}</span>
+              <ChevronRight className="w-4 h-4" />
             </button>
-
-            {/* Quick Nudge Buttons */}
-            <div className="flex items-center gap-1.5 ml-1">
-              <button
-                onClick={() => handleManualNudge("left")}
-                aria-label="Nudge left"
-                className="w-9 h-9 rounded-full border border-espresso/20 bg-[#FFFDF9] text-espresso hover:bg-espresso hover:text-[#FFF9EE] flex items-center justify-center transition-colors shadow-sm"
-              >
-                <ChevronLeft className="w-4 h-4" />
-              </button>
-              <button
-                onClick={() => handleManualNudge("right")}
-                aria-label="Nudge right"
-                className="w-9 h-9 rounded-full border border-espresso/20 bg-[#FFFDF9] text-espresso hover:bg-espresso hover:text-[#FFF9EE] flex items-center justify-center transition-colors shadow-sm"
-              >
-                <ChevronRight className="w-4 h-4" />
-              </button>
-            </div>
           </div>
         </div>
       </div>
@@ -111,18 +77,19 @@ export function GallerySlideshow() {
       {/* Auto-scrolling Continuous Strip Container */}
       <div 
         ref={containerRef}
-        className="relative w-full overflow-x-auto no-scrollbar py-4"
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+        className="relative w-full overflow-x-auto no-scrollbar py-4 cursor-grab"
       >
         {/* Soft edge fade masks for high-end boutique feel */}
         <div className="absolute left-0 top-0 bottom-0 w-12 sm:w-24 bg-gradient-to-r from-[#FFF9EE] to-transparent z-10 pointer-events-none" />
         <div className="absolute right-0 top-0 bottom-0 w-12 sm:w-24 bg-gradient-to-l from-[#FFF9EE] to-transparent z-10 pointer-events-none" />
 
-        {/* Marquee Track */}
+        {/* Marquee Track: Slow speed by default (55s) & automatically paused on cursor hover */}
         <div 
-          ref={trackRef}
-          className={`animate-gallery-scroll ${isPaused ? "animate-gallery-scroll-paused" : ""}`}
+          className={`animate-gallery-scroll ${isHovered ? "animate-gallery-scroll-paused" : ""}`}
           style={{
-            animationDuration: scrollSpeed === "slow" ? "65s" : "38s",
+            animationDuration: "55s",
           }}
         >
           {seamlessPhotos.map((photo, idx) => (
@@ -175,7 +142,7 @@ export function GallerySlideshow() {
       {/* Helper hint */}
       <div className="text-center mt-6 text-xs text-espresso/50 flex items-center justify-center gap-2">
         <Sparkles className="w-3.5 h-3.5 text-caramel" />
-        <span>Hover over any slide to pause the auto-slideshow • Click any photo to enlarge</span>
+        <span>Hover over any photo to pause slideshow • Click to enlarge</span>
       </div>
 
       {/* Lightbox Modal */}
