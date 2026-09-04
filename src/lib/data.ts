@@ -95,7 +95,7 @@ export const MENU_ITEMS: MenuItem[] = [
     description: "Rich cold-brew espresso topped with a luscious velvety handcrafted salted buttercream froth.",
     category: "coffee",
     price: "RM 14.90",
-    image: "/assets/images/coffee/1.webp",
+    image: "/assets/images/coffee/iced-coffee.webp",
     isSignature: true,
     badge: "Trending",
     temperature: "Iced",
@@ -106,7 +106,7 @@ export const MENU_ITEMS: MenuItem[] = [
     description: "Layered steamed milk with vanilla infusion, marked with fresh espresso and drizzled with buttery caramel sauce.",
     category: "coffee",
     price: "RM 14.00",
-    image: "/assets/images/coffee/2.webp",
+    image: "/assets/images/coffee/caramel-macchiato.webp",
     temperature: "Both",
   },
   {
@@ -115,7 +115,7 @@ export const MENU_ITEMS: MenuItem[] = [
     description: "Espresso roast blend with silky steamed full cream milk, crowned with delicate latte art.",
     category: "coffee",
     price: "RM 11.90",
-    image: "/assets/images/coffee/3.webp",
+    image: "/assets/images/coffee/latte-art.webp",
     temperature: "Both",
   },
   {
@@ -124,7 +124,7 @@ export const MENU_ITEMS: MenuItem[] = [
     description: "Harmonious union of single-origin dark Dutch cocoa with rich espresso shot and steamed milk.",
     category: "coffee",
     price: "RM 14.50",
-    image: "/assets/images/coffee/4.webp",
+    image: "/assets/images/coffee/mocha.webp",
     temperature: "Both",
   },
   // Wok Specialties
@@ -134,17 +134,17 @@ export const MENU_ITEMS: MenuItem[] = [
     description: "Wok-tossed seasoned fried rice loaded with wok-hei aroma, topped with our signature marinated crispy chicken wing.",
     category: "wok",
     price: "RM 16.50",
-    image: "/assets/images/dishes-spread.webp",
+    image: "/assets/images/fried_dishes/nasi-goreng-wings.webp",
     isPopular: true,
     badge: "Wok Specialty",
   },
   {
     id: "w-2",
-    name: "Kuey Teow Kungfu",
-    description: "Flat rice noodles wok-charred and enveloped in an egg-rich savory prawn and squid gravy with garden greens.",
+    name: "Mee Goreng Pelita",
+    description: "Yellow egg noodles charred over high flame with fresh tiger prawns, tender chicken, and crisp vegetables.",
     category: "wok",
     price: "RM 15.50",
-    image: "/assets/images/fried_dishes/4.webp",
+    image: "/assets/images/fried_dishes/mee-goreng.webp",
   },
   {
     id: "w-3",
@@ -152,7 +152,7 @@ export const MENU_ITEMS: MenuItem[] = [
     description: "Traditional village-style fried rice infused with pounded shallots, bird’s eye chili, crispy water spinach (kangkung), and golden anchovies.",
     category: "wok",
     price: "RM 14.50",
-    image: "/assets/images/fried_dishes/1.webp",
+    image: "/assets/images/fried_dishes/nasi-goreng-kampung.webp",
     isSpicy: true,
   },
   // Light Bites
@@ -167,19 +167,20 @@ export const MENU_ITEMS: MenuItem[] = [
   },
   {
     id: "b-2",
-    name: "Crispy Cheese Loaded Fries",
-    description: "Golden shoestring fries seasoned lightly with sea salt, generously smothered with melted cheddar cheese glaze.",
+    name: "Nasi Goreng Cina Seafood",
+    description: "Delicate non-spicy Chinese-style wok fried rice garnished with fresh prawns, calamari, sweet corn and scallions.",
     category: "bites",
-    price: "RM 11.00",
-    image: "/assets/images/fried_dishes/3.webp",
+    price: "RM 16.90",
+    image: "/assets/images/fried_dishes/nasi-goreng-seafood.webp",
   },
   {
     id: "b-3",
-    name: "Golden Bakwan Sayur",
-    description: "Traditional crispy mixed vegetable fritters served piping hot with sweet tangy homemade dipping sauce.",
+    name: "Nasi Goreng Cili Padi",
+    description: "Extra spicy fried rice with crushed cili padi and sliced beef, aromatic and fiery.",
     category: "bites",
-    price: "RM 8.90",
-    image: "/assets/images/fried_dishes/5.webp",
+    price: "RM 15.00",
+    image: "/assets/images/fried_dishes/nasi-goreng-cili-padi.webp",
+    isSpicy: true,
   }
 ];
 
@@ -219,7 +220,7 @@ export const BRANCHES: BranchInfo[] = [
 export const GALLERY_PHOTOS: GalleryPhoto[] = [
   {
     id: "g-1",
-    title: "Artisanal Coffee Craft",
+    title: "Artisanal Coffee Roasting",
     subtitle: "Precision extracted specialty beans roasted with passion",
     src: "/assets/images/coffee.webp",
     category: "coffee",
@@ -247,9 +248,9 @@ export const GALLERY_PHOTOS: GalleryPhoto[] = [
   },
   {
     id: "g-5",
-    title: "Velvety Spanish Latte",
-    subtitle: "Double espresso kissed by velvety sweet milk",
-    src: "/assets/images/coffee/1.webp",
+    title: "Silky Latte Art Creation",
+    subtitle: "Double espresso kissed by textured microfoam",
+    src: "/assets/images/coffee/latte-art.webp",
     category: "coffee",
   },
   {
@@ -261,9 +262,9 @@ export const GALLERY_PHOTOS: GalleryPhoto[] = [
   },
   {
     id: "g-7",
-    title: "Freshly Brewed Moments",
-    subtitle: "The distinct aroma of freshly ground Arabica beans",
-    src: "/assets/images/coffee/2.webp",
+    title: "Caramel Macchiato Elegance",
+    subtitle: "Buttery caramel layers dancing over iced espresso",
+    src: "/assets/images/coffee/caramel-macchiato.webp",
     category: "coffee",
   },
   {
@@ -273,6 +274,20 @@ export const GALLERY_PHOTOS: GalleryPhoto[] = [
     src: "/assets/images/chef-story.webp",
     category: "space",
   },
+  {
+    id: "g-9",
+    title: "Nasi Lemak Sambal Sotong",
+    subtitle: "Slow-simmered spicy squid with aromatic coconut rice",
+    src: "/assets/images/nasi-lemak-sotong.webp",
+    category: "cuisine",
+  },
+  {
+    id: "g-10",
+    title: "Fiery Nasi Ayam Geprek",
+    subtitle: "Hand-smashed golden chicken with fiery chili relish",
+    src: "/assets/images/nasi-ayam-geprek.webp",
+    category: "cuisine",
+  }
 ];
 
 export const TESTIMONIALS: Testimonial[] = [

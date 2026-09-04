@@ -71,3 +71,26 @@ body {
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+
+/* Continuous Auto-Scroll Gallery Marquee */
+@keyframes continuousScroll {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.animate-gallery-scroll {
+  display: flex;
+  width: max-content;
+  animation: continuousScroll 40s linear infinite;
+  will-change: transform;
+}
+
+.animate-gallery-scroll:hover,
+.animate-gallery-scroll-paused {
+  animation-play-state: paused !important;
+}
+
