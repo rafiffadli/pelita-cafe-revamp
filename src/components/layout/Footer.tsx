@@ -194,8 +194,8 @@ export function Footer() {
           <p>© 2026 {BRAND_INFO.legalName} • All Rights Reserved</p>
           <div className="flex items-center gap-6">
             <a href="#hero" className="hover:text-caramel transition-colors">Home</a>
-            <a href="#menu" className="hover:text-caramel transition-colors">Menu</a>
             <a href="#gallery" className="hover:text-caramel transition-colors">Gallery</a>
+            <a href="#menu" className="hover:text-caramel transition-colors">Menu</a>
             <a href="#reserve" className="hover:text-caramel transition-colors">Reservations</a>
             <a href={BRAND_INFO.whatsappUrl} target="_blank" rel="noopener noreferrer" className="hover:text-caramel transition-colors">WhatsApp Concierge</a>
           </div>

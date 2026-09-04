@@ -34,8 +34,8 @@ export function Navbar({ onOpenMenuModal }: NavbarProps) {
   const navLinks = [
     { label: "Home", href: "#hero" },
     { label: "Our Story", href: "#story" },
-    { label: "Menu", href: "#menu" },
     { label: "Gallery", href: "#gallery" },
+    { label: "Menu", href: "#menu" },
     { label: "Branches", href: "#branches" },
     { label: "Reservation", href: "#reserve" },
   ];
